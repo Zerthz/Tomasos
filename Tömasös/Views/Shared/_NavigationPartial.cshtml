@@ -1,0 +1,14 @@
+﻿
+<!--Olika meny val om man är inloggad, och om man är inloggad som admin-->
+@if (signInManager.IsSignedIn(User))
+{
+    <li class="@Html.ActiveClass("Account", "ViewProfile")">
+        <a asp-controller="Account" asp-action="ViewProfile">Profil</a>
+    </li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li   class="@Html.ActiveClass("Admin", "Dashboard")">
+          <a asp-controller="Admin" asp-action="Dashboard">Admin</a>
+        </li>
+    }
+}

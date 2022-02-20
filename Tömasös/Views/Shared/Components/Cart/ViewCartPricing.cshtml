@@ -1,0 +1,43 @@
+﻿@model Tömasös.ViewModels.ViewCartViewModel
+<h1>Pris</h1>
+
+<section class="pricing-grid">    
+    <h3>Pris</h3>
+    @if(@Model.FreeMeal is not null || @Model.Discount is not null)
+    {
+        <h4 class="primary-colored-text">@Model.FullPrice kr</h4>
+    }
+    else
+    {
+        <h4 class="primary-colored-text">@Model.Price kr</h4>
+        
+    }
+
+   
+    @if(@Model.Discount is not null){
+        <h3>Rabatt 20%</h3>
+        <h4 class="accent-colored-text">@Model.Discount</h4>
+    }
+    
+    @if (@Model.FreeMeal is not null)
+    {
+        <h3>Gratis Måltid</h3>
+        <h4 class="accent-colored-text">@Model.FreeMeal</h4>
+    }
+    @if(@Model.FreeMeal is not null || @Model.Discount is not null)
+    {
+        <h3>Rabatterat Pris</h3>
+        <h4 class="accent-colored-text">@Model.Price</h4>
+    }
+    @if (Model.Cart.Count > 0)
+    {
+        <button class="btn grid-col-span-2 btn-bigger">
+            <a asp-controller="Food" asp-action="CheckOut">Lägg Beställning</a>
+        </button>
+    }
+    else
+    {
+        <button class="btn grid-col-span-2 btn-disabled" disabled>Lägg Beställning</button>
+    }
+</section>
+

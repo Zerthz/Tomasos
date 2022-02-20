@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tömasös</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+
+ 
+</head>
+<body>
+    <header>
+    <nav>
+        <ul>
+            <li>
+                <a asp-controller="Home" asp-action="Index" >
+                    <img src="~/assets/images/HomeLogo.svg" width="70px"/>
+                </a>
+            </li>
+            <li class="@Html.ActiveClass("Home", "Index")">
+                <a asp-controller="Home" asp-action="Index">Hem</a>
+            </li>
+            <li class="@Html.ActiveClass("Home", "Menu")">
+                <a asp-controller="Home" asp-action="Menu">Meny</a>
+            </li>
+            <partial name="_NavigationPartial" />
+        </ul>
+
+        <partial name="_LoginPartial" />
+    </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

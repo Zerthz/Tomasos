@@ -1,0 +1,50 @@
+﻿@model Tömasös.ViewModels.DishViewModel
+
+<div class="menunav">
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li>
+                    <a href="#@category.Description">@category.Description</a>
+                </li>
+            }
+        </ul>
+        @await Component.InvokeAsync("Cart", new {Cart = new List<Dish>()})
+    </div>
+<div class="container">
+    
+    
+
+    
+    @foreach(var category in Model.Categories)
+    {
+        <section class="mealcategory" id="@category.Description">
+            <h1>@category.Description</h1>
+             @foreach(var dish in Model.Dishes.Where(x=> x.DishType == category.DishType1))
+            {        
+            <a asp-controller="Food"
+            asp-action="AddToCart" 
+            asp-route-dishId=@dish.DishId
+            data-ajax="true"
+            data-ajax-method="GET"
+            data-ajax-mode="replace"
+            data-ajax-update=".cart">
+                <div class="meal">
+                    <img class="mealimg" src="https://picsum.photos/100">
+                    <div class="mealinfo">
+                        <h3 class="dishname">@dish.DishName</h3>
+                        <p class="mealdescription">@dish.Description</p>
+                        @await Component.InvokeAsync("Dish", new {ingredients = dish.Products.ToList()})                   
+                        <p class="mealprice">@dish.Price SEK</p>
+                    </div>
+
+                </div>
+            </a>
+         }
+
+        </section>
+    }
+    
+       
+</div>
+

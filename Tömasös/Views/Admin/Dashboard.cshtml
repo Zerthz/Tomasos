@@ -1,0 +1,94 @@
+﻿@model Tömasös.ViewModels.Admin.AdminViewModel
+<script src="~/js/selectlist.js" defer></script>
+
+<main class="admingrid">
+    <section class="grid-col-span-3 viewcomponent-holder">        
+        <h1 class="admin-placeholder grid-col-span-2">Välj något här under</h1>        
+    </section>
+    <span class="errormsg grid-col-span-3">@ViewBag.Errors</span>
+    <section>
+        <div>
+            <h2>Kunder</h2>
+            <ul class="admin-lists">
+            @foreach (var customer in Model.Users.OrderBy(x=> x.Name))
+            {    
+                 <li>
+                    <a asp-controller="Admin"
+                    asp-action="ViewCustomer"
+                    asp-route-id="@customer.Id"
+                    data-ajax="true"
+                    data-ajax-method="GET"
+                    data-ajax-mode="replace"
+                    data-ajax-update=".viewcomponent-holder">
+
+                     @customer.Name @customer.Email
+                </a>
+                </li>                
+            }
+            </ul>
+        </div>
+    </section>
+     <section>
+        <div>
+            <h2>Maträtter</h2>
+            <ul class="admin-lists">
+            @foreach (var category in Model.DishVM.Categories)
+                {
+                    <h2 class="admin-dish-category">@category.Description</h2>
+                    
+                    @foreach(var dish in Model.DishVM.Dishes.Where(x=> x.DishType == category.DishType1))
+                    {
+                         <li>
+                           <a asp-controller="Admin"
+                           asp-action="ViewDish"
+                           asp-route-id="@dish.DishId"
+                           data-ajax="true"
+                           data-ajax-mode="replace"
+                           data-ajax-update=".viewcomponent-holder">                        
+                           @dish.DishName
+                        </a>
+                    </li>
+                    }
+                    
+                }
+            </ul>
+            <div class="flexable --space-around">
+                <button class="btn btn-bigger">
+                    <a asp-controller="Admin" asp-action="CreateNewDish"
+                    data-ajax="true" data-ajax-data-ajax-mode="replace" data-ajax-update=".viewcomponent-holder">Ny Mat</a>
+                </button> 
+                <button class="btn btn-bigger">
+                    <a asp-controller="Admin" asp-action="CreateNewIngredient"
+                    data-ajax="true" data-ajax-data-ajax-mode="replace" data-ajax-update=".viewcomponent-holder">Ny Ingrediens</a>
+                </button> 
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div>
+            <h2>Aktiva Ordrar</h2>
+            <ul class="admin-lists">
+                @foreach (var order in Model.Orders.OrderByDescending(x => x.OrderDate))
+               {
+                   <li>
+                       <a asp-controller="Admin"
+                       asp-action="ViewOrder"
+                       asp-route-id="@order.OrderId"
+                       data-ajax="true"
+                       data-ajax-mode="replace"
+                       data-ajax-update=".viewcomponent-holder">
+                        
+                       @order.OrderDate.ToShortDateString() @order.OrderDate.ToShortTimeString() - @order.OrderDishes.Sum(x=> x.Amount) maträtter
+                        </a>
+                    </li>
+               }
+            </ul>
+        </div>
+    
+    </section>
+
+
+</main>
+
+

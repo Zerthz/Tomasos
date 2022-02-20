@@ -1,0 +1,29 @@
+﻿@model Tömasös.ViewModels.Admin.AdminDishViewModel
+
+<script src="~/js/selectlist.js" defer></script>
+
+<section class="grid-col-span-2">
+    <form class="admin-edit-dish" asp-controller="Admin" asp-action="CreateNewDish" method="post">
+   
+
+        <input class="grid-col-span-3" asp-for="Dish.DishName" />
+
+
+        <input asp-for="Dish.Price"  />
+
+        <select class="grid-col-span-2" asp-for="DishEditedCategoryName" asp-items="@Model.Categories">
+            <option selected disabled>Välj En Kategori</option>
+        </select>
+        <textarea asp-for="Dish.Description" ></textarea>
+        <select id="allIngredients" class="admin-dish-ingredients" asp-items="@Model.AllIngredients" multiple></select>
+        <div class="flexable --flex-col">
+            <input type="button" id="add" class="btn btn-bigger" value="→" />
+            <input type="button" id="remove" class="btn btn-remove" value="←">
+        </div>
+        <select id="dishIngredients" class="admin-dish-ingredients" asp-for="DishEditedIngredients" multiple></select>
+        <button id="" class="admin-right-button btn btn-bigger myButton" type="submit">Spara</button>
+        <span>@ViewBag.Message</span>
+
+    </form>
+
+</section>

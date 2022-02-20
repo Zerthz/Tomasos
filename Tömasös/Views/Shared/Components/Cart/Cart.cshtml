@@ -1,0 +1,20 @@
+﻿@model List<Tömasös.Models.Dish>
+
+@if(Model.Count == 0){
+    <div id="cart" class="rightmenu cart">
+        <a asp-controller="Food" asp-action="ViewCart">
+            <img src="~/assets/icons/shopping-cart.png"  />
+        </a>
+    </div>
+}
+else
+{
+    <div id="cart" class="rightmenu cart">
+        <h3>@Model.Count</h3>
+        <a asp-controller="Food" asp-action="ViewCart">
+            <img src="~/assets/icons/shopping-cart-filled.png"  />
+        </a>
+        
+    </div>
+}
+

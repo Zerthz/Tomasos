@@ -1,0 +1,57 @@
+﻿@model Tömasös.ViewModels.ViewProfileViewModel
+
+<main class="profile-grid">
+    <section>
+        <h2>Profil</h2>
+        <div class="profile-values-grid">
+            <h3>Namn</h3>
+            <p>@Model.User.Name</p>
+
+             <h3>Email</h3>
+            <p>@Model.User.Email</p>
+
+             <h3>Användarnamn</h3>
+            <p>@Model.User.UserName</p>
+
+             <h3>Telefonnummer</h3>
+            <p>@Model.User.PhoneNumber</p>
+
+             <h3>Adress</h3>
+            <p>@Model.User.StreetAddress</p>
+
+             <h3>Postort</h3>
+            <p>@Model.User.ZipCode @Model.User.City</p>
+
+            @if(User.IsInRole("Admin") || User.IsInRole("PremiumUser"))
+            {
+                <div class="flexable">
+                    <h3>Poäng mot gratis rätt</h3>
+                    <p>@Model.User.PremiumPoints / 10</p>
+                </div>
+            }
+            
+            
+                <a asp-controller="Account" asp-action="UpdateProfile">
+                    <button class="btn">Uppdatera</button>
+                </a>
+
+        </div>
+    </section>
+    <section >
+        <h2>
+            Beställningshistorik
+        </h2>
+        <ul class="scrollable-orders">
+            
+             @foreach(var item in Model.Orders)
+            {
+                <li>
+                    @String.Join(", ",item.OrderDishes.Select(x=>x.Dish.DishName)) @item.OrderDate.ToShortDateString() -  @item.OrderDate.ToShortTimeString()
+                
+                </li>
+            }           
+        </ul>
+       
+       
+    </section>
+</main>

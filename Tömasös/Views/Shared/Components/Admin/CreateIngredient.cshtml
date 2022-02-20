@@ -1,0 +1,11 @@
+﻿@model Tömasös.Models.Product
+
+<article class="grid-col-span-2">
+    <form class="newingredient grid-col-span-2" asp-controller="Admin" asp-action="CreateNewIngredient" method="post">
+        <label asp-for="ProductName"></label>
+        <input type="text" asp-for="ProductName" />
+        <span asp-validation-for="ProductName"></span>
+        <button class="btn btn-bigger" type="submit">Spara</button>
+    </form>
+
+</article>

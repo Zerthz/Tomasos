@@ -1,0 +1,37 @@
+﻿@model Tömasös.ViewModels.Admin.AdminOrderViewModel
+
+
+<article class="adminordercustomer">
+    <h1 class="adminorderheader">
+        @Model.Order.Customer.UserName - @Model.Order.OrderDate.ToShortDateString() / @Model.Order.OrderDate.ToShortTimeString()
+    </h1>
+    <h3 class="faded-text">@Model.Order.Customer.Email - @Model.Order.Customer.PhoneNumber</h3>
+    <h2 class="primary-colored-text">@Model.Order.TotalPrice kr</h2>
+    <form asp-controller="Admin" asp-action="UpdateOrder" method="post">
+        <input type="hidden" asp-for="Order.OrderId" value="@Model.Order.OrderId" /> 
+        <select asp-for="UpdatedOrderStatus" asp-items="@Model.OrderStatuses"></select>
+        <button type="submit" class="btn">Uppdatera</button>
+    </form>
+    <button class="btn btn-remove">
+        <a asp-controller="Admin" asp-action="RemoveOrder" asp-route-id=@Model.Order.OrderId>Ta Bort Order</a>
+    </button>
+    
+</article>
+<article>
+    <h1 class="adminorderheader">
+        Mat
+    </h1>
+    @foreach (var dish in Model.Order.OrderDishes)
+    {
+        @if(dish.Amount > 1)
+        {
+            <h3 class="orderdish">@dish.Dish.DishName x @dish.Amount</h3>
+        }
+        else
+        {
+            <h3 class="orderdish">@dish.Dish.DishName</h3>            
+        }
+    }
+</article>
+
+ 

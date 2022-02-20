@@ -1,0 +1,24 @@
+﻿@model List<Tömasös.Models.Dish>
+<main class="cart-grid">
+    <section>
+        <h1>Varukorg</h1>
+        <div class="cart-container">
+             @foreach(var dish in Model)
+             {
+                <div class="cartitem">
+                    <h3 class="cartname">@dish.DishName</h3>
+                    <h4 class="cartprice">@dish.Price kr</h4>
+                    <button class="cartremove btn btn-remove">
+                        <a asp-controller="Food" asp-action="RemoveFromCart" asp-route-id=@dish.DishId>X</a>
+                    </button>
+                </div>
+             }
+        </div>
+       
+    </section>
+    
+    <section class="pricing">
+         @await Component.InvokeAsync("ViewCart", new { cart = @Model})   
+    </section>
+
+</main>

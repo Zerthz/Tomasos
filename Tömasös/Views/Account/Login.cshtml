@@ -1,0 +1,28 @@
+﻿@{
+    var returnUrl = Context.Request.Query["ReturnUrl"];
+}
+
+
+@model Tömasös.Models.AspNetUser
+
+<form asp-route-returnUrl="@returnUrl" asp-controller="Account" asp-action="Login" method="post">
+    <div class="form-style">
+        <div class="grid-container">
+            <div class="field">
+                <label asp-for="UserName"></label>
+                <input type="text" asp-for="UserName"/>
+            </div>
+
+            <div class="field">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password"/>
+            </div>
+
+            <div class="form-functionality">
+                <a asp-controller="Account" asp-action="Register">Registrera</a>
+                <input value="Logga In" class="btn btn-bigger" type="submit" />
+            </div>
+            <span class="errormsg">@ViewBag.Message</span>
+        </div>
+    </div>
+</form>

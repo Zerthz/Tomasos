@@ -1,0 +1,11 @@
+﻿@if (signInManager.IsSignedIn(User)){
+    <ul class="rightmenu">
+        <li><a asp-controller="Account" asp-action="Logout">Logga ut</a></li>
+    </ul>
+}
+else{
+    <ul class="rightmenu">
+        <li><a asp-controller="Account" asp-action="Login">Logga in</a> </li>
+        <li><a asp-controller="Account" asp-action="Register">Registrera</a> </li>
+    </ul>
+}

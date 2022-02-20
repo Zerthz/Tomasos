@@ -1,0 +1,82 @@
+﻿@model Tömasös.Models.AspNetUser
+
+<script src="~/js/register.js" defer></script>
+
+<form asp-controller="Account" asp-action="Register" method="post">
+    <div class="form-style">
+        <div class="grid-container">
+
+            <div class="field">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name"/>
+                <span class="errormsg" asp-validation-for="Name"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Email"></label>
+                <input type="email" asp-for="Email"/>
+                <span class="errormsg" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="PhoneNumber"></label>
+                <input type="text" asp-for="PhoneNumber"/>
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="UserName"></label>
+                <input type="text" asp-for="UserName"/>
+                <span class="errormsg" asp-validation-for="UserName"></span>
+            </div>
+
+            <div class="col-fields">
+                <div class="field left-col">
+                    <label asp-for="Password"></label>
+                    <input class="passwordField" id="password" type="password" asp-for="Password"/>
+                </div>
+
+                <div class="field right-col">
+                    <label>Bekräfta Lösenord</label>
+                    <input class="passwordField" id="passwordConfirm" type="password" />                    
+                </div>
+                <span class="errormsg grid-col-span-2" asp-validation-for="Password"></span>
+
+            </div>
+            
+
+            <div class="field">
+                <label asp-for="StreetAddress"></label>
+                <input type="text" asp-for="StreetAddress"/>
+                <span class="errormsg" asp-validation-for="StreetAddress"></span>
+            </div>
+
+            <div class="col-fields">
+                 <div class="field left-col">
+                    <label asp-for="ZipCode"></label>
+                    <input type="text" asp-for="ZipCode"/>
+                    <span class="errormsg" asp-validation-for="ZipCode"></span>
+                </div> 
+
+                <div class="field right-col">
+                    <label asp-for="City"></label>
+                    <input type="text" asp-for="City"/>
+                    <span class="errormsg" asp-validation-for="City"></span>
+                </div>
+            </div> 
+
+             <div class="form-functionality">
+                 <a asp-controller="Account" asp-action="Login">Logga in</a>
+                <button class="btn btn-bigger" type="submit">Registrera</button>
+            </div>
+        </div>
+    </div>
+   
+ 
+
+    
+
+   
+
+
+</form>

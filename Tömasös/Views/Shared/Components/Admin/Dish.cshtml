@@ -1,0 +1,33 @@
+﻿@model Tömasös.ViewModels.Admin.AdminDishViewModel
+
+<script src="~/js/selectlist.js" defer></script>
+
+<section class="grid-col-span-2">
+    <form class="admin-edit-dish" asp-controller="Admin" asp-action="EditDish" method="post">
+        <input type="hidden" asp-for="Dish.DishId" value="@Model.Dish.DishId" />
+        <input type="hidden" asp-for="Dish.DishTypeNavigation.DishType1" value="@Model.Dish.DishTypeNavigation.DishType1" />
+        <input type="hidden" asp-for="Dish.DishTypeNavigation.Description" value="@Model.Dish.DishTypeNavigation.Description" />
+
+        
+        <input class="grid-col-span-3" asp-for="Dish.DishName" />
+            
+
+
+        <input asp-for="Dish.Price" value=@Model.Dish.Price />
+
+        <select class="grid-col-span-2" asp-for="DishEditedCategoryName" asp-items="@Model.Categories">
+            <option selected disabled>Välj En Kategori</option>
+        </select>
+        <textarea asp-for="Dish.Description" value=@Model.Dish.Description></textarea>
+        <select id="allIngredients" class="admin-dish-ingredients" asp-items="@Model.AllIngredients" multiple></select>
+        <div class="flexable --flex-col">
+            <input type="button" id="add" class="btn btn-bigger" value="→" />
+            <input type="button" id="remove" class="btn btn-remove" value="←">
+        </div>
+        <select id="dishIngredients" class="admin-dish-ingredients" asp-items="@Model.DishCurrentIngredients" asp-for="DishEditedIngredients" multiple></select>
+        
+        <button id="" class="admin-right-button btn btn-bigger myButton" type="submit">Spara</button>
+
+
+    </form>
+</section>

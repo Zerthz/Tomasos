@@ -1,0 +1,54 @@
+﻿@model Tömasös.ModelsIdentity.ApplicationUser
+
+<form asp-controller="Account" asp-action="UpdateProfile" method="post">
+    <div class="form-style">
+        <div class="grid-container">
+                 <div class="field">
+                <label>Namn</label>
+                <input  type="text" asp-for="Name" value="@Model.Name"/>
+            </div>
+
+            <div class="field">
+                <label asp-for="Email"></label>
+                <input type="email" asp-for="Email" value="@Model.Email"/>
+                <span  class="errormsg" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="field">
+                <label>Telefonnummer</label>
+                <input type="text" asp-for="PhoneNumber" value="@Model.PhoneNumber"/>
+                <span class="errormsg"  asp-validation-for="PhoneNumber"></span>
+            </div>
+
+             <div class="field">
+                <label>Användarnamn</label>
+                <input type="text" asp-for="UserName" value="@Model.UserName" disabled/>
+                <span class="errormsg" asp-validation-for="UserName"></span>
+             </div>
+
+             <div class="field">
+                <label>Address</label>
+                <input type="text" asp-for="StreetAddress" value="@Model.StreetAddress"/>
+                <span class="errormsg" asp-validation-for="StreetAddress"></span>
+            </div>
+          
+            <div class="col-fields">
+                    <div class="field left-col">
+                    <label>Postnummer</label>
+                    <input type="text" asp-for="ZipCode" value="@Model.ZipCode"/>
+                    <span class="errormsg" asp-validation-for="ZipCode"></span>
+                </div> 
+
+                <div class="field right-col">
+                    <label>Postort</label>
+                    <input type="text" asp-for="City" value="@Model.City"/>
+                    <span class="errormsg" asp-validation-for="City"></span>
+                </div>
+            </div> 
+
+            <button class="btn btn-bigger" type="submit">Spara Ändringar</button>
+
+        </div>
+       
+    </div>    
+</form>
