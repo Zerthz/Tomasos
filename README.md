@@ -12,7 +12,7 @@ The task was to produce a website from where you could display and order meals f
 * MSSQL for database
   * Entity Framework Core for connetion to application
 * CSS
-* Very basic vanilla JavaScript
+* Very basic JavaScript with jQuery
 * Design patterns including 
   * Dependency Injection
   * Repository Pattern
